@@ -18,9 +18,7 @@ def t0Pts : List Point :=
   [Point.frac 0, Point.int 0, Point.int (-2), Point.int 2, Point.int 1, Point.int (-1), Point.frac (-2), Point.frac 2, Point.frac 4]
 
 def t0Ops : Prog t0K :=
-  [ valid_ops.shiftL 0 10
-  , valid_ops.shiftR 0 10
-  , valid_ops.phaseProduct 4
+  [ valid_ops.phaseProduct 4
   , valid_ops.phaseProduct 0
   , valid_ops.shiftL 2 2
   , valid_ops.addScaled 2 4 false 4
@@ -52,6 +50,8 @@ def t0Ops : Prog t0K :=
   , valid_ops.phaseProduct 2
   , valid_ops.addScaled 2 3 false 2
   , valid_ops.addScaled 2 1 false 4
+  , valid_ops.shiftL 2 4
+  , valid_ops.shiftR 2 4
   , valid_ops.phaseProduct 2
   , valid_ops.shiftL 2 2
   , valid_ops.addScaled 2 4 false 0
