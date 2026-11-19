@@ -15,54 +15,56 @@ open Shor Operations
 abbrev t0K : ℕ := 5
 
 def t0Pts : List Point :=
-  [Point.int 0, Point.frac 0, Point.frac (-2), Point.frac 2, Point.int 1, Point.int (-1), Point.int (-2), Point.int 2, Point.int 4]
+  [Point.frac 0, Point.int 0, Point.int (-2), Point.int 2, Point.int 1, Point.int (-1), Point.frac (-2), Point.frac 2, Point.frac 4]
 
 def t0Ops : Prog t0K :=
-  [ valid_ops.phaseProduct 0
+  [ valid_ops.shiftL 0 10
+  , valid_ops.shiftR 0 10
   , valid_ops.phaseProduct 4
+  , valid_ops.phaseProduct 0
   , valid_ops.shiftL 2 2
-  , valid_ops.addScaled 2 0 false 4
-  , valid_ops.addScaled 2 1 true 3
-  , valid_ops.addScaled 2 3 true 1
-  , valid_ops.addScaled 2 4 false 0
+  , valid_ops.addScaled 2 4 false 4
+  , valid_ops.addScaled 2 3 true 3
+  , valid_ops.addScaled 2 1 true 1
+  , valid_ops.addScaled 2 0 false 0
   , valid_ops.phaseProduct 2
-  , valid_ops.addScaled 2 1 false 4
-  , valid_ops.addScaled 2 3 false 2
+  , valid_ops.addScaled 2 3 false 4
+  , valid_ops.addScaled 2 1 false 2
   , valid_ops.phaseProduct 2
-  , valid_ops.addScaled 2 0 false 2
-  , valid_ops.addScaled 2 0 true 4
-  , valid_ops.addScaled 2 1 true 2
-  , valid_ops.addScaled 2 3 false 1
-  , valid_ops.addScaled 2 4 true 0
   , valid_ops.addScaled 2 4 false 2
+  , valid_ops.addScaled 2 4 true 4
+  , valid_ops.addScaled 2 3 true 2
+  , valid_ops.addScaled 2 1 false 1
+  , valid_ops.addScaled 2 0 true 0
+  , valid_ops.addScaled 2 0 false 2
   , valid_ops.shiftR 2 2
   , valid_ops.phaseProduct 2
-  , valid_ops.addScaled 2 1 true 1
   , valid_ops.addScaled 2 3 true 1
+  , valid_ops.addScaled 2 1 true 1
   , valid_ops.phaseProduct 2
   , valid_ops.shiftL 2 2
-  , valid_ops.addScaled 2 0 false 0
-  , valid_ops.addScaled 2 0 true 2
-  , valid_ops.addScaled 2 1 false 1
-  , valid_ops.addScaled 2 3 true 2
+  , valid_ops.addScaled 2 4 false 0
   , valid_ops.addScaled 2 4 true 2
-  , valid_ops.addScaled 2 4 false 4
+  , valid_ops.addScaled 2 3 false 1
+  , valid_ops.addScaled 2 1 true 2
+  , valid_ops.addScaled 2 0 true 2
+  , valid_ops.addScaled 2 0 false 4
   , valid_ops.phaseProduct 2
-  , valid_ops.addScaled 2 1 false 2
-  , valid_ops.addScaled 2 3 false 4
+  , valid_ops.addScaled 2 3 false 2
+  , valid_ops.addScaled 2 1 false 4
   , valid_ops.phaseProduct 2
   , valid_ops.shiftL 2 2
-  , valid_ops.addScaled 2 0 false 0
-  , valid_ops.addScaled 2 0 true 2
-  , valid_ops.addScaled 2 1 true 2
-  , valid_ops.addScaled 2 3 false 5
-  , valid_ops.addScaled 2 4 true 6
-  , valid_ops.addScaled 2 4 false 8
+  , valid_ops.addScaled 2 4 false 0
+  , valid_ops.addScaled 2 4 true 2
+  , valid_ops.addScaled 2 3 true 2
+  , valid_ops.addScaled 2 1 false 5
+  , valid_ops.addScaled 2 0 true 6
+  , valid_ops.addScaled 2 0 false 8
   , valid_ops.phaseProduct 2
-  , valid_ops.addScaled 2 0 true 0
-  , valid_ops.addScaled 2 1 true 2
-  , valid_ops.addScaled 2 3 true 6
-  , valid_ops.addScaled 2 4 true 8
+  , valid_ops.addScaled 2 4 true 0
+  , valid_ops.addScaled 2 3 true 2
+  , valid_ops.addScaled 2 1 true 6
+  , valid_ops.addScaled 2 0 true 8
   , valid_ops.shiftR 2 4
   ]
 
@@ -83,35 +85,82 @@ def t0 : ShorLoweringSetup where
 abbrev t1K : ℕ := 8
 
 def t1Pts : List Point :=
-  [Point.int 0, Point.frac 0, Point.int 1, Point.int (-1), Point.frac 2, Point.frac (-2), Point.int 2, Point.int (-2), Point.frac 4, Point.frac (-4), Point.int 4, Point.int (-4), Point.frac 8, Point.int 8, Point.int (-8)]
+  [Point.int 0, Point.frac 0, Point.int (-8), Point.int 8, Point.int (-4), Point.int 4, Point.int (-2), Point.int 2, Point.int 1, Point.frac 2, Point.frac (-2), Point.frac 4, Point.frac (-4), Point.frac 8, Point.frac (-8)]
 
 def t1Ops : Prog t1K :=
   [ valid_ops.phaseProduct 0
   , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 0 2 false 0
-  , valid_ops.addScaled 0 4 false 0
-  , valid_ops.addScaled 0 6 false 0
-  , valid_ops.addScaled 1 3 false 0
-  , valid_ops.addScaled 1 5 false 0
-  , valid_ops.addScaled 1 7 false 0
-  , valid_ops.addScaled 0 1 false 0
+  , valid_ops.addScaled 0 2 false 6
+  , valid_ops.addScaled 0 4 false 12
+  , valid_ops.addScaled 0 6 false 18
+  , valid_ops.addScaled 1 3 false 6
+  , valid_ops.addScaled 1 5 false 12
+  , valid_ops.addScaled 1 7 false 18
+  , valid_ops.addScaled 0 1 true 3
   , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 false 4
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 true 3
+  , valid_ops.addScaled 0 2 true 6
+  , valid_ops.addScaled 0 4 true 12
+  , valid_ops.addScaled 0 6 true 18
+  , valid_ops.addScaled 1 3 true 6
+  , valid_ops.addScaled 1 5 true 12
+  , valid_ops.addScaled 1 7 true 18
+  , valid_ops.addScaled 0 2 false 4
+  , valid_ops.addScaled 0 4 false 8
+  , valid_ops.addScaled 0 6 false 12
+  , valid_ops.addScaled 1 3 false 4
+  , valid_ops.addScaled 1 5 false 8
+  , valid_ops.addScaled 1 7 false 12
+  , valid_ops.addScaled 0 1 true 2
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 false 3
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 true 2
+  , valid_ops.addScaled 0 2 true 4
+  , valid_ops.addScaled 0 4 true 8
+  , valid_ops.addScaled 0 6 true 12
+  , valid_ops.addScaled 1 3 true 4
+  , valid_ops.addScaled 1 5 true 8
+  , valid_ops.addScaled 1 7 true 12
+  , valid_ops.addScaled 0 2 false 2
+  , valid_ops.addScaled 0 4 false 4
+  , valid_ops.addScaled 0 6 false 6
+  , valid_ops.addScaled 1 3 false 2
+  , valid_ops.addScaled 1 5 false 4
+  , valid_ops.addScaled 1 7 false 6
   , valid_ops.addScaled 0 1 true 1
   , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 0
-  , valid_ops.addScaled 0 2 true 0
-  , valid_ops.addScaled 0 4 true 0
-  , valid_ops.addScaled 0 6 true 0
-  , valid_ops.addScaled 1 3 true 0
-  , valid_ops.addScaled 1 5 true 0
-  , valid_ops.addScaled 1 7 true 0
+  , valid_ops.addScaled 0 1 false 2
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 true 0
+  , valid_ops.addScaled 1 3 true 2
+  , valid_ops.addScaled 1 5 true 4
+  , valid_ops.addScaled 1 7 true 6
+  , valid_ops.addScaled 3 2 false 0
+  , valid_ops.addScaled 5 4 false 0
+  , valid_ops.addScaled 7 6 false 0
+  , valid_ops.addScaled 0 3 true 2
+  , valid_ops.addScaled 0 3 false 0
+  , valid_ops.addScaled 0 5 true 4
+  , valid_ops.addScaled 0 5 false 0
+  , valid_ops.addScaled 0 7 true 6
+  , valid_ops.addScaled 0 7 false 0
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 3 true 0
+  , valid_ops.addScaled 0 5 true 0
+  , valid_ops.addScaled 0 7 true 0
   , valid_ops.addScaled 7 5 false 2
   , valid_ops.addScaled 7 3 false 4
-  , valid_ops.addScaled 7 1 false 6
+  , valid_ops.addScaled 7 0 false 6
+  , valid_ops.addScaled 0 1 true 0
+  , valid_ops.addScaled 3 2 true 0
+  , valid_ops.addScaled 5 4 true 0
   , valid_ops.addScaled 6 4 false 2
   , valid_ops.addScaled 6 2 false 4
   , valid_ops.addScaled 6 0 false 6
-  , valid_ops.addScaled 7 6 false 1
+  , valid_ops.addScaled 7 6 false 0
   , valid_ops.phaseProduct 7
   , valid_ops.addScaled 7 6 true 2
   , valid_ops.phaseProduct 7
@@ -122,23 +171,6 @@ def t1Ops : Prog t1K :=
   , valid_ops.addScaled 6 4 true 2
   , valid_ops.addScaled 6 2 true 4
   , valid_ops.addScaled 6 0 true 6
-  , valid_ops.addScaled 0 2 false 2
-  , valid_ops.addScaled 0 4 false 4
-  , valid_ops.addScaled 0 6 false 6
-  , valid_ops.addScaled 1 3 false 2
-  , valid_ops.addScaled 1 5 false 4
-  , valid_ops.addScaled 1 7 false 6
-  , valid_ops.addScaled 0 1 false 1
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 2
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 1
-  , valid_ops.addScaled 0 2 true 2
-  , valid_ops.addScaled 0 4 true 4
-  , valid_ops.addScaled 0 6 true 6
-  , valid_ops.addScaled 1 3 true 2
-  , valid_ops.addScaled 1 5 true 4
-  , valid_ops.addScaled 1 7 true 6
   , valid_ops.addScaled 7 5 false 4
   , valid_ops.addScaled 7 3 false 8
   , valid_ops.addScaled 7 1 false 12
@@ -156,55 +188,23 @@ def t1Ops : Prog t1K :=
   , valid_ops.addScaled 6 4 true 4
   , valid_ops.addScaled 6 2 true 8
   , valid_ops.addScaled 6 0 true 12
-  , valid_ops.addScaled 0 2 false 4
-  , valid_ops.addScaled 0 4 false 8
-  , valid_ops.addScaled 0 6 false 12
-  , valid_ops.addScaled 1 3 false 4
-  , valid_ops.addScaled 1 5 false 8
-  , valid_ops.addScaled 1 7 false 12
-  , valid_ops.addScaled 0 1 false 2
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 3
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 2
-  , valid_ops.addScaled 0 2 true 4
-  , valid_ops.addScaled 0 4 true 8
-  , valid_ops.addScaled 0 6 true 12
-  , valid_ops.addScaled 1 3 true 4
-  , valid_ops.addScaled 1 5 true 8
-  , valid_ops.addScaled 1 7 true 12
-  , valid_ops.addScaled 7 6 false 3
   , valid_ops.addScaled 7 5 false 6
-  , valid_ops.addScaled 7 4 false 9
   , valid_ops.addScaled 7 3 false 12
-  , valid_ops.addScaled 7 2 false 15
   , valid_ops.addScaled 7 1 false 18
-  , valid_ops.addScaled 7 0 false 21
+  , valid_ops.addScaled 6 4 false 6
+  , valid_ops.addScaled 6 2 false 12
+  , valid_ops.addScaled 6 0 false 18
+  , valid_ops.addScaled 7 6 false 3
   , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 true 3
+  , valid_ops.addScaled 7 6 true 4
+  , valid_ops.phaseProduct 7
+  , valid_ops.addScaled 7 6 false 3
   , valid_ops.addScaled 7 5 true 6
-  , valid_ops.addScaled 7 4 true 9
   , valid_ops.addScaled 7 3 true 12
-  , valid_ops.addScaled 7 2 true 15
   , valid_ops.addScaled 7 1 true 18
-  , valid_ops.addScaled 7 0 true 21
-  , valid_ops.addScaled 0 2 false 6
-  , valid_ops.addScaled 0 4 false 12
-  , valid_ops.addScaled 0 6 false 18
-  , valid_ops.addScaled 1 3 false 6
-  , valid_ops.addScaled 1 5 false 12
-  , valid_ops.addScaled 1 7 false 18
-  , valid_ops.addScaled 0 1 false 3
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 4
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 3
-  , valid_ops.addScaled 0 2 true 6
-  , valid_ops.addScaled 0 4 true 12
-  , valid_ops.addScaled 0 6 true 18
-  , valid_ops.addScaled 1 3 true 6
-  , valid_ops.addScaled 1 5 true 12
-  , valid_ops.addScaled 1 7 true 18
+  , valid_ops.addScaled 6 4 true 6
+  , valid_ops.addScaled 6 2 true 12
+  , valid_ops.addScaled 6 0 true 18
   ]
 
 theorem t1Hpts : t1Pts.length = q t1K := rfl
@@ -338,64 +338,62 @@ def t2 : ShorLoweringSetup where
 abbrev t3K : ℕ := 6
 
 def t3Pts : List Point :=
-  [Point.int 0, Point.int 1, Point.int (-1), Point.int 2, Point.int (-2), Point.int (-4), Point.frac 0, Point.frac 2, Point.frac (-2), Point.frac 4, Point.frac (-4)]
+  [Point.int 0, Point.frac 0, Point.int (-4), Point.int 4, Point.int (-2), Point.int 2, Point.int 1, Point.frac 2, Point.frac (-2), Point.frac 4, Point.frac (-4)]
 
 def t3Ops : Prog t3K :=
   [ valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 2 false 0
-  , valid_ops.addScaled 0 4 false 0
-  , valid_ops.addScaled 1 3 false 0
-  , valid_ops.addScaled 1 5 false 0
-  , valid_ops.addScaled 0 1 false 0
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 1
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 0
-  , valid_ops.addScaled 0 2 true 0
-  , valid_ops.addScaled 0 2 false 2
-  , valid_ops.addScaled 0 4 true 0
-  , valid_ops.addScaled 0 4 false 4
-  , valid_ops.addScaled 1 3 true 0
-  , valid_ops.addScaled 1 3 false 2
-  , valid_ops.addScaled 1 5 true 0
-  , valid_ops.addScaled 1 5 false 4
-  , valid_ops.addScaled 0 1 false 1
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 2
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 1
-  , valid_ops.addScaled 0 2 true 2
+  , valid_ops.phaseProduct 5
   , valid_ops.addScaled 0 2 false 4
-  , valid_ops.addScaled 0 4 true 4
   , valid_ops.addScaled 0 4 false 8
-  , valid_ops.addScaled 1 3 true 2
   , valid_ops.addScaled 1 3 false 4
-  , valid_ops.addScaled 1 5 true 4
   , valid_ops.addScaled 1 5 false 8
   , valid_ops.addScaled 0 1 true 2
   , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 2
+  , valid_ops.addScaled 0 1 false 3
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 true 2
   , valid_ops.addScaled 0 2 true 4
   , valid_ops.addScaled 0 4 true 8
   , valid_ops.addScaled 1 3 true 4
   , valid_ops.addScaled 1 5 true 8
-  , valid_ops.phaseProduct 5
+  , valid_ops.addScaled 0 2 false 2
+  , valid_ops.addScaled 0 4 false 4
+  , valid_ops.addScaled 1 3 false 2
+  , valid_ops.addScaled 1 5 false 4
+  , valid_ops.addScaled 0 1 true 1
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 false 2
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 1 true 0
+  , valid_ops.addScaled 1 3 true 2
+  , valid_ops.addScaled 1 5 true 4
+  , valid_ops.addScaled 3 2 false 0
+  , valid_ops.addScaled 5 4 false 0
+  , valid_ops.addScaled 0 3 true 2
+  , valid_ops.addScaled 0 3 false 0
+  , valid_ops.addScaled 0 5 true 4
+  , valid_ops.addScaled 0 5 false 0
+  , valid_ops.phaseProduct 0
+  , valid_ops.addScaled 0 3 true 0
+  , valid_ops.addScaled 0 5 true 0
   , valid_ops.addScaled 5 3 false 2
-  , valid_ops.addScaled 5 1 false 4
+  , valid_ops.addScaled 5 0 false 4
+  , valid_ops.addScaled 0 1 true 0
+  , valid_ops.addScaled 3 2 true 0
   , valid_ops.addScaled 4 2 false 2
   , valid_ops.addScaled 4 0 false 4
-  , valid_ops.addScaled 5 4 false 1
+  , valid_ops.addScaled 5 4 false 0
   , valid_ops.phaseProduct 5
   , valid_ops.addScaled 5 4 true 2
   , valid_ops.phaseProduct 5
   , valid_ops.addScaled 5 4 false 1
   , valid_ops.addScaled 5 3 true 2
-  , valid_ops.addScaled 5 3 false 4
   , valid_ops.addScaled 5 1 true 4
-  , valid_ops.addScaled 5 1 false 8
   , valid_ops.addScaled 4 2 true 2
-  , valid_ops.addScaled 4 2 false 4
   , valid_ops.addScaled 4 0 true 4
+  , valid_ops.addScaled 5 3 false 4
+  , valid_ops.addScaled 5 1 false 8
+  , valid_ops.addScaled 4 2 false 4
   , valid_ops.addScaled 4 0 false 8
   , valid_ops.addScaled 5 4 false 2
   , valid_ops.phaseProduct 5
@@ -536,7 +534,7 @@ def t6 : ShorLoweringSetup where
 /-! ===== the policy ===== -/
 
 def policy : ShorPolicySubmission where
-  bands := [(2348, t0), (2200, t1), (1175, t2), (1101, t3), (1026, t1), (1025, t2), (551, t0), (276, t4), (258, t5), (148, t4), (139, t5), (120, t4), (74, t5), (69, t6), (66, t5), (65, t6)]
+  bands := [(2348, t0), (2200, t1), (1175, t2), (1101, t3), (1026, t1), (1025, t2), (514, t0), (276, t4), (258, t5), (148, t4), (139, t5), (113, t4), (74, t5), (69, t6), (66, t5), (65, t6)]
   sorted := by decide
 
 end PolicySubmission
