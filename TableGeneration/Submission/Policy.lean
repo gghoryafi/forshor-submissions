@@ -15,128 +15,146 @@ open Shor Operations
 abbrev t0K : ℕ := 8
 
 def t0Pts : List Point :=
-  [Point.int 0, Point.frac 0, Point.int (-8), Point.int 8, Point.int (-4), Point.int 4, Point.int (-2), Point.int 2, Point.int 1, Point.frac 2, Point.frac (-2), Point.frac 4, Point.frac (-4), Point.frac 8, Point.frac (-8)]
+  [Point.int 0, Point.frac 0, Point.int 1, Point.int (-1), Point.frac 2, Point.frac (-2), Point.int 2, Point.int (-2), Point.frac 8, Point.int 8, Point.int (-8), Point.frac 4, Point.frac (-4), Point.int 4, Point.int (-4)]
 
 def t0Ops : Prog t0K :=
   [ valid_ops.shiftL 0 23
   , valid_ops.shiftR 0 23
   , valid_ops.phaseProduct 0
   , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 0 2 false 6
-  , valid_ops.addScaled 0 4 false 12
-  , valid_ops.addScaled 0 6 false 18
-  , valid_ops.addScaled 1 3 false 6
-  , valid_ops.addScaled 1 5 false 12
-  , valid_ops.addScaled 1 7 false 18
-  , valid_ops.addScaled 0 1 true 3
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 4
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 3
-  , valid_ops.addScaled 0 2 true 6
-  , valid_ops.addScaled 0 4 true 12
-  , valid_ops.addScaled 0 6 true 18
-  , valid_ops.addScaled 1 3 true 6
-  , valid_ops.addScaled 1 5 true 12
-  , valid_ops.addScaled 1 7 true 18
-  , valid_ops.addScaled 0 2 false 4
-  , valid_ops.addScaled 0 4 false 8
-  , valid_ops.addScaled 0 6 false 12
-  , valid_ops.addScaled 1 3 false 4
-  , valid_ops.addScaled 1 5 false 8
-  , valid_ops.addScaled 1 7 false 12
-  , valid_ops.addScaled 0 1 true 2
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 3
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 2
-  , valid_ops.addScaled 0 2 true 4
-  , valid_ops.addScaled 0 4 true 8
-  , valid_ops.addScaled 0 6 true 12
-  , valid_ops.addScaled 1 3 true 4
-  , valid_ops.addScaled 1 5 true 8
-  , valid_ops.addScaled 1 7 true 12
-  , valid_ops.addScaled 0 2 false 2
-  , valid_ops.addScaled 0 4 false 4
-  , valid_ops.addScaled 0 6 false 6
-  , valid_ops.addScaled 1 3 false 2
-  , valid_ops.addScaled 1 5 false 4
-  , valid_ops.addScaled 1 7 false 6
-  , valid_ops.addScaled 0 1 true 1
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 false 2
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 1 true 0
-  , valid_ops.addScaled 1 3 true 2
-  , valid_ops.addScaled 1 5 true 4
-  , valid_ops.addScaled 1 7 true 6
-  , valid_ops.addScaled 3 2 false 0
-  , valid_ops.addScaled 5 4 false 0
-  , valid_ops.addScaled 7 6 false 0
-  , valid_ops.addScaled 0 3 true 2
-  , valid_ops.addScaled 0 3 false 0
-  , valid_ops.addScaled 0 5 true 4
-  , valid_ops.addScaled 0 5 false 0
-  , valid_ops.addScaled 0 7 true 6
-  , valid_ops.addScaled 0 7 false 0
-  , valid_ops.phaseProduct 0
-  , valid_ops.addScaled 0 3 true 0
-  , valid_ops.addScaled 0 5 true 0
-  , valid_ops.addScaled 0 7 true 0
-  , valid_ops.addScaled 7 5 false 2
-  , valid_ops.addScaled 7 3 false 4
-  , valid_ops.addScaled 7 0 false 6
-  , valid_ops.addScaled 0 1 true 0
-  , valid_ops.addScaled 3 2 true 0
-  , valid_ops.addScaled 5 4 true 0
-  , valid_ops.addScaled 6 4 false 2
-  , valid_ops.addScaled 6 2 false 4
-  , valid_ops.addScaled 6 0 false 6
-  , valid_ops.addScaled 7 6 false 0
-  , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 true 2
-  , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 false 1
-  , valid_ops.addScaled 7 5 true 2
-  , valid_ops.addScaled 7 3 true 4
-  , valid_ops.addScaled 7 1 true 6
-  , valid_ops.addScaled 6 4 true 2
-  , valid_ops.addScaled 6 2 true 4
-  , valid_ops.addScaled 6 0 true 6
-  , valid_ops.addScaled 7 5 false 4
-  , valid_ops.addScaled 7 3 false 8
-  , valid_ops.addScaled 7 1 false 12
-  , valid_ops.addScaled 6 4 false 4
-  , valid_ops.addScaled 6 2 false 8
-  , valid_ops.addScaled 6 0 false 12
-  , valid_ops.addScaled 7 6 false 2
-  , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 true 3
-  , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 false 2
-  , valid_ops.addScaled 7 5 true 4
-  , valid_ops.addScaled 7 3 true 8
-  , valid_ops.addScaled 7 1 true 12
-  , valid_ops.addScaled 6 4 true 4
-  , valid_ops.addScaled 6 2 true 8
-  , valid_ops.addScaled 6 0 true 12
-  , valid_ops.addScaled 7 5 false 6
-  , valid_ops.addScaled 7 3 false 12
-  , valid_ops.addScaled 7 1 false 18
-  , valid_ops.addScaled 6 4 false 6
-  , valid_ops.addScaled 6 2 false 12
-  , valid_ops.addScaled 6 0 false 18
-  , valid_ops.addScaled 7 6 false 3
-  , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 true 4
-  , valid_ops.phaseProduct 7
-  , valid_ops.addScaled 7 6 false 3
-  , valid_ops.addScaled 7 5 true 6
-  , valid_ops.addScaled 7 3 true 12
-  , valid_ops.addScaled 7 1 true 18
-  , valid_ops.addScaled 6 4 true 6
-  , valid_ops.addScaled 6 2 true 12
-  , valid_ops.addScaled 6 0 true 18
+  , valid_ops.addScaled 2 0 false 0
+  , valid_ops.addScaled 2 4 false 0
+  , valid_ops.addScaled 2 6 false 0
+  , valid_ops.addScaled 3 1 false 0
+  , valid_ops.addScaled 3 5 false 0
+  , valid_ops.addScaled 3 7 false 0
+  , valid_ops.addScaled 2 3 false 0
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 true 1
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 false 0
+  , valid_ops.addScaled 2 6 true 0
+  , valid_ops.shiftL 2 2
+  , valid_ops.addScaled 2 4 false 0
+  , valid_ops.addScaled 4 0 true 0
+  , valid_ops.addScaled 2 0 false 3
+  , valid_ops.addScaled 2 4 true 2
+  , valid_ops.shiftL 2 2
+  , valid_ops.addScaled 2 6 false 0
+  , valid_ops.addScaled 3 7 true 0
+  , valid_ops.shiftL 3 2
+  , valid_ops.addScaled 3 5 false 0
+  , valid_ops.addScaled 5 1 true 0
+  , valid_ops.addScaled 3 1 false 3
+  , valid_ops.addScaled 3 5 true 2
+  , valid_ops.shiftL 3 2
+  , valid_ops.addScaled 3 7 false 0
+  , valid_ops.addScaled 3 2 false 1
+  , valid_ops.phaseProduct 3
+  , valid_ops.addScaled 3 2 true 2
+  , valid_ops.phaseProduct 3
+  , valid_ops.addScaled 3 2 false 1
+  , valid_ops.addScaled 2 6 true 0
+  , valid_ops.shiftR 2 2
+  , valid_ops.addScaled 2 4 true 0
+  , valid_ops.addScaled 2 4 false 4
+  , valid_ops.addScaled 2 6 false 6
+  , valid_ops.addScaled 3 7 true 0
+  , valid_ops.shiftR 3 2
+  , valid_ops.addScaled 3 5 true 0
+  , valid_ops.addScaled 3 5 false 4
+  , valid_ops.addScaled 3 7 false 6
+  , valid_ops.addScaled 2 3 false 1
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 true 2
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 false 1
+  , valid_ops.addScaled 2 6 true 6
+  , valid_ops.addScaled 2 0 true 0
+  , valid_ops.shiftR 2 2
+  , valid_ops.addScaled 2 0 false 6
+  , valid_ops.addScaled 0 4 false 0
+  , valid_ops.shiftL 2 6
+  , valid_ops.addScaled 2 0 false 0
+  , valid_ops.addScaled 2 0 true 8
+  , valid_ops.shiftL 2 6
+  , valid_ops.addScaled 2 6 false 0
+  , valid_ops.addScaled 3 7 true 6
+  , valid_ops.addScaled 3 1 true 0
+  , valid_ops.shiftR 3 2
+  , valid_ops.addScaled 3 1 false 6
+  , valid_ops.addScaled 1 5 false 0
+  , valid_ops.shiftL 3 6
+  , valid_ops.addScaled 3 1 false 0
+  , valid_ops.addScaled 3 1 true 8
+  , valid_ops.shiftL 3 6
+  , valid_ops.addScaled 3 7 false 0
+  , valid_ops.addScaled 3 2 false 3
+  , valid_ops.phaseProduct 3
+  , valid_ops.addScaled 3 2 true 3
+  , valid_ops.addScaled 2 6 true 0
+  , valid_ops.shiftR 2 6
+  , valid_ops.addScaled 2 4 true 0
+  , valid_ops.addScaled 2 4 false 12
+  , valid_ops.addScaled 2 6 false 18
+  , valid_ops.addScaled 3 7 true 0
+  , valid_ops.shiftR 3 6
+  , valid_ops.addScaled 3 5 true 0
+  , valid_ops.addScaled 3 5 false 12
+  , valid_ops.addScaled 3 7 false 18
+  , valid_ops.addScaled 2 3 false 3
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 true 4
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 false 3
+  , valid_ops.addScaled 2 6 true 18
+  , valid_ops.addScaled 2 0 false 2
+  , valid_ops.addScaled 2 0 true 12
+  , valid_ops.addScaled 0 4 true 0
+  , valid_ops.addScaled 2 0 true 0
+  , valid_ops.shiftR 2 2
+  , valid_ops.addScaled 2 0 false 8
+  , valid_ops.shiftL 2 4
+  , valid_ops.addScaled 2 6 false 0
+  , valid_ops.addScaled 3 7 true 18
+  , valid_ops.addScaled 3 1 false 2
+  , valid_ops.addScaled 3 1 true 12
+  , valid_ops.addScaled 1 5 true 0
+  , valid_ops.addScaled 3 1 true 0
+  , valid_ops.shiftR 3 2
+  , valid_ops.addScaled 3 1 false 8
+  , valid_ops.shiftL 3 4
+  , valid_ops.addScaled 3 7 false 0
+  , valid_ops.addScaled 3 2 false 2
+  , valid_ops.phaseProduct 3
+  , valid_ops.addScaled 3 2 true 3
+  , valid_ops.phaseProduct 3
+  , valid_ops.addScaled 3 2 false 2
+  , valid_ops.addScaled 2 6 true 0
+  , valid_ops.shiftR 2 4
+  , valid_ops.addScaled 2 4 true 0
+  , valid_ops.addScaled 2 4 false 8
+  , valid_ops.addScaled 2 6 false 12
+  , valid_ops.addScaled 3 7 true 0
+  , valid_ops.shiftR 3 4
+  , valid_ops.addScaled 3 5 true 0
+  , valid_ops.addScaled 3 5 false 8
+  , valid_ops.addScaled 3 7 false 12
+  , valid_ops.addScaled 2 3 false 2
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 true 3
+  , valid_ops.phaseProduct 2
+  , valid_ops.addScaled 2 3 false 2
+  , valid_ops.addScaled 2 6 true 12
+  , valid_ops.addScaled 2 0 true 0
+  , valid_ops.shiftR 2 4
+  , valid_ops.addScaled 4 0 false 0
+  , valid_ops.addScaled 2 4 true 4
+  , valid_ops.addScaled 3 7 true 12
+  , valid_ops.addScaled 3 1 true 0
+  , valid_ops.shiftR 3 4
+  , valid_ops.addScaled 5 1 false 0
+  , valid_ops.addScaled 3 5 true 4
   ]
 
 theorem t0Hpts : t0Pts.length = q t0K := rfl
